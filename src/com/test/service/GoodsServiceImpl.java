@@ -209,4 +209,33 @@ public class GoodsServiceImpl implements GoodsService{
       if(conn != null){DButil.closeConnection(conn);}
     }
   }
+
+
+public JsonData selectDetail(Goods obj) {
+    Connection conn = DButil.getConnection();//数据库连接
+    GoodsDAOImpl bo = new GoodsDAOImpl(conn);//业务层对象，用于调用DAO层方法
+    try{
+      ArrayList<Goods> rows = new ArrayList<Goods>();
+      rows = bo.selectDetail(obj);//返回记录集
+      conn.commit();
+      success = true; 
+      msg = "查询成功";
+      jd = new JsonData(success,msg,total,rows);
+      return jd;
+    }catch(Exception e){
+      try {
+        conn.rollback();
+      }
+      catch (SQLException e1) {
+        e1.printStackTrace();
+      }
+      e.printStackTrace();
+      success = false; 
+      msg = "查询失败";
+      jd = new JsonData(success,msg);
+      return jd;
+    }finally{
+      if(conn != null){DButil.closeConnection(conn);}
+    }
+  }
 }

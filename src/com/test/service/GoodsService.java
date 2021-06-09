@@ -11,6 +11,7 @@ import com.test.pojo.Goods;
 
 public interface GoodsService {
   public JsonData select(Goods obj);//查询业务
+  public JsonData selectDetail(Goods obj);//随机查询业务
   public JsonData selectRnd(Goods obj);//随机查询业务
   public JsonData insert(Goods obj);//添加业务
   public JsonData update(Goods obj);//修改业务

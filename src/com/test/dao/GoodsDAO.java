@@ -11,6 +11,7 @@ import com.test.pojo.Goods;
 
 public interface GoodsDAO {
   public ArrayList<Goods> select(Goods obj) throws SQLException;//查询记录
+  public ArrayList<Goods> selectDetail(Goods obj) throws SQLException;//查询记录
   public ArrayList<Goods> selectRnd(Goods obj) throws SQLException;//随机查询记录
   public int count(Goods obj) throws SQLException;//统计记录数
   public int insert(Goods obj) throws SQLException;//添加记录

@@ -16,15 +16,15 @@ import com.test.service.GoodsServiceImpl;
 /**
  * Servlet implementation class RndGoods
  */
-@WebServlet("/goods/RndGoods")
-public class RndGoods extends HttpServlet {
+@WebServlet("/goods/Detail")
+public class Detail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     GoodsServiceImpl dto = new GoodsServiceImpl();//数据传输层对象，用于调用业务层方法
     Goods pojo = new Goods(); //持久层对象，用于参数传递
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RndGoods() {
+    public Detail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,12 +39,16 @@ public class RndGoods extends HttpServlet {
 	    request.setCharacterEncoding("utf-8");
 	    
 	    //1.(参)获取参数值，并保存到POJO对象
-	    pojo.setLimit(" limit 0,10 ");//分页条件
-	    pojo.setOrderBy(" order by rnd ");//排序条件
+//	    pojo.setLimit(" limit 0,10 ");//分页条件
+//	    pojo.setOrderBy(" order by rnd ");//排序条件
+	    int id = Integer.parseInt(request.getParameter("id"));
+//	    int id = 1;
+	    pojo.setId(id);
+	    pojo.setCondition("goods.id="+id);
 
 	    //2.(调)调用ServiceDAO的方法，完成对应业务
 	    //System.out.println(pojo.toString());
-	    JsonData jd = dto.selectRnd(pojo);
+	    JsonData jd = dto.selectDetail(pojo);
 	    //System.out.println(jd.toString());
 	    
 	    //3.(存)将数据对象存储到request作用范围变量

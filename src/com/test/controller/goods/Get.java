@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.test.pojo.JsonData;
 import com.test.pojo.Goods;
 import com.test.service.GoodsServiceImpl;
-@WebServlet("/com/test/controller/goods/Get")
+@WebServlet("/goods/Get")
 public class Get extends HttpServlet {
   
   private static final long serialVersionUID = 1L;
